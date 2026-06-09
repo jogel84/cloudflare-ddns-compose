@@ -1,0 +1,20 @@
+services:
+  cloudflare-ddns:
+    image: favonia/cloudflare-ddns:1
+    container_name: cloudflare-ddns
+    restart: unless-stopped
+
+    user: "1000:1000"
+    read_only: true
+    cap_drop:
+      - all
+    security_opt:
+      - no-new-privileges:true
+
+    environment:
+      - CLOUDFLARE_API_TOKEN=${TOKEN_CLOUDFLARE}
+      - DOMAINS=${DOMINIO_CLOUDFLARE}
+      - PROXIED=false
+      - IP6_PROVIDER=none
+      - UPDATE_CRON=@every 30s
+      - TZ=America/Montevideo
