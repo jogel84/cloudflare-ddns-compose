@@ -16,5 +16,5 @@ services:
       - DOMAINS=${DOMINIO_CLOUDFLARE}
       - PROXIED=false
       - IP6_PROVIDER=none
-      - UPDATE_CRON=@every 30s
+      - UPDATE_CRON=${TIME_CRON}
       - TZ=America/Montevideo
